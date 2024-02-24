@@ -1,0 +1,4 @@
+*.model
+*.vocab
+/data
+/target
