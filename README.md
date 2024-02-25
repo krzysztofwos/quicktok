@@ -55,3 +55,7 @@ Performance measured on AMD Ryzen 9 3950X 16-core processor using the `train-enw
 |       2 |                 1411.15 |   1.89x |
 |       4 |                  869.31 |   3.08x |
 |       8 |                  704.82 |   3.79x |
+
+## License
+
+MIT
