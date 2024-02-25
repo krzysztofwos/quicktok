@@ -47,7 +47,7 @@ python train-enwik8.py --vocab-file-path models/enwik8.vocab --num-threads 8
 
 ## Performance
 
-Performance measured on AMD Ryzen 9 3950X 16-Core processor using the `train-enwik8.py` script.
+Performance measured on AMD Ryzen 9 3950X 16-core processor using the `train-enwik8.py` script.
 
 | Threads | Training Time (seconds) | Speedup |
 | ------: | ----------------------: | ------: |
