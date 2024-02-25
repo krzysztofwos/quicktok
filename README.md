@@ -6,16 +6,10 @@ Rust implementation of Andrej Karpathy's [minbpe](https://github.com/karpathy/mi
 
 ## Usage
 
-Install [Rust](https://www.rust-lang.org/):
-
-```bash
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-```
-
 Install the package:
 
 ```bash
-pip install .
+pip install quicktok
 ```
 
 ### Basic example
