@@ -1,0 +1,24 @@
+{
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": ["GitHub.copilot", "GitHub.copilot-chat"],
+      "settings": {
+        "editor.defaultFormatter": "trunk.io",
+        "editor.formatOnSave": true,
+        "rust-analyzer.server.extraEnv": {
+          "CARGO": "/usr/local/cargo/bin/cargo",
+          "RUSTC": "/usr/local/cargo/bin/rustc"
+        }
+      }
+    }
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/python:latest": {},
+    "ghcr.io/devcontainers/features/rust:latest": {},
+    "ghcr.io/trunk-io/devcontainer-feature/trunk:latest": {}
+  },
+  "postCreateCommand": "pip install --user --upgrade pip && pip install --user --requirement requirements.txt && cargo install cargo-sort && cargo install cargo-watch"
+}
