@@ -50,6 +50,14 @@ Performance measured on AMD Ryzen 9 3950X 16-core processor using the `train-enw
 |       4 |                  869.31 |   3.08x |
 |       8 |                  704.82 |   3.79x |
 
+## Development
+
+The repository contains a [Dev Container](https://containers.dev/overview) configuration compatible with Visual Studio Code, JetBrains RustRover, and other [tools](https://containers.dev/supporting).
+
+To use it in VS Code, install the [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension, open the repository, and click "Reopen in Container" in the notification that appears in the bottom-right corner of the window.
+
+The Dev Container contains all the necessary tools and dependencies. It can also be used with [GitHub Codespaces](https://github.com/features/codespaces), allowing development directly in the browser.
+
 ## License
 
 MIT
