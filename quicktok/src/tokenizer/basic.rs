@@ -31,7 +31,7 @@ fn get_most_common_pair(
         .map(|(&pair, _)| pair)
 }
 
-fn parallel_get_most_common_pair(ids: &[usize], num_chunks: usize) -> (usize, usize) {
+fn parallel_get_most_common_pair(ids: &[usize], num_chunks: usize) -> Option<(usize, usize)> {
     assert!(num_chunks > 0, "num_chunks must be greater than 0");
     let chunk_size = ids.len() / num_chunks;
     let counts = Mutex::new(HashMap::new());
@@ -59,7 +59,7 @@ fn parallel_get_most_common_pair(ids: &[usize], num_chunks: usize) -> (usize, us
 
     let counts = counts.into_inner().unwrap();
     let (pair, _) = counts.iter().max_by_key(|&(_, &count)| count).unwrap();
-    *pair
+    Some(*pair)
 }
 
 fn merge(ids: &mut Vec<usize>, pair: (usize, usize), new_id: usize) {
@@ -217,13 +217,20 @@ impl Tokenizer for BasicTokenizer {
             let pair = if self.num_threads > 1 {
                 parallel_get_most_common_pair(&ids, self.num_threads)
             } else {
-                get_most_common_pair(&mut counts, &ids).unwrap()
+                get_most_common_pair(&mut counts, &ids)
             };
-            let idx = 256 + i;
-            merge(&mut ids, pair, idx);
-            self.merges.insert(pair, idx);
-            let new_token = [self.vocab[&pair.0].clone(), self.vocab[&pair.1].clone()].concat();
-            self.vocab.insert(idx, new_token.clone());
+
+            match pair {
+                Some(pair) => {
+                    let idx = 256 + i;
+                    merge(&mut ids, pair, idx);
+                    self.merges.insert(pair, idx);
+                    let new_token =
+                        [self.vocab[&pair.0].clone(), self.vocab[&pair.1].clone()].concat();
+                    self.vocab.insert(idx, new_token.clone());
+                }
+                None => break,
+            }
         }
     }
 
