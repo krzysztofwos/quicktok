@@ -23,13 +23,12 @@ fn populate_counts(counts: &mut HashMap<(usize, usize), usize>, ids: &[usize]) {
 fn get_most_common_pair(
     counts: &mut HashMap<(usize, usize), usize>,
     ids: &[usize],
-) -> (usize, usize) {
+) -> Option<(usize, usize)> {
     populate_counts(counts, ids);
     counts
         .iter()
         .max_by_key(|&(_, &count)| count)
         .map(|(&pair, _)| pair)
-        .unwrap()
 }
 
 fn parallel_get_most_common_pair(ids: &[usize], num_chunks: usize) -> (usize, usize) {
@@ -217,7 +216,7 @@ impl Tokenizer for BasicTokenizer {
             let pair = if self.num_threads > 1 {
                 parallel_get_most_common_pair(&ids, self.num_threads)
             } else {
-                get_most_common_pair(&mut counts, &ids)
+                get_most_common_pair(&mut counts, &ids).unwrap()
             };
             let idx = 256 + i;
             merge(&mut ids, pair, idx);
