@@ -4,6 +4,7 @@ from pathlib import Path
 
 import requests
 import typer
+
 from quicktok import BasicTokenizer
 
 ENWIK8_URL = "http://mattmahoney.net/dc/enwik8.zip"
