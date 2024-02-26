@@ -36,7 +36,7 @@ pip install -r requirements.txt
 Run training script:
 
 ```bash
-python train-enwik8.py --vocab-file-path models/enwik8.vocab --num-threads 8
+./train-enwik8.py --vocab-file-path models/enwik8.vocab --num-threads 8
 ```
 
 ## Rust examples
