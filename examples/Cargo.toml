@@ -1,0 +1,10 @@
+[package]
+name = "quicktok-examples"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "train"
+
+[dependencies]
+quicktok = { path = "../quicktok" }
