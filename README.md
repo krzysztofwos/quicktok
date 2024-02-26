@@ -64,6 +64,8 @@ Performance measured on AMD Ryzen 9 3950X 16-core processor using the `train-enw
 |       4 |                  869.31 |   3.08x |
 |       8 |                  704.82 |   3.79x |
 
+minbpe's BasicTokenizer takes 27002.18 seconds to train on the same dataset, making quicktok 38x faster.
+
 ## Development
 
 The repository contains a [Dev Container](https://containers.dev/overview) configuration compatible with Visual Studio Code, JetBrains RustRover, and other [tools](https://containers.dev/supporting).
