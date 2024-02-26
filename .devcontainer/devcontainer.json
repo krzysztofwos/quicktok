@@ -4,7 +4,11 @@
   },
   "customizations": {
     "vscode": {
-      "extensions": ["GitHub.copilot", "GitHub.copilot-chat"],
+      "extensions": [
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "github.vscode-github-actions"
+      ],
       "settings": {
         "editor.defaultFormatter": "trunk.io",
         "editor.formatOnSave": true,
