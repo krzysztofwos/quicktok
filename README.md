@@ -36,7 +36,7 @@ pip install -r requirements.txt
 Run training script:
 
 ```bash
-./train-enwik8.py --vocab-file-path models/enwik8.vocab --num-threads 8
+./train-enwik8.py --num-threads 4 --save-vocab
 ```
 
 ## Rust examples
@@ -44,7 +44,7 @@ Run training script:
 ### Basic
 
 ```bash
-cargo run --release --package quicktok-examples --bin train -- data/taylorswift.txt --vocab-size 512
+cargo run --release --package quicktok-examples --bin train -- data/taylorswift.txt --save-vocab
 ```
 
 ### Multi-threaded

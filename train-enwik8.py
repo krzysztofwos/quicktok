@@ -15,9 +15,9 @@ ENWIK8_URL = "http://mattmahoney.net/dc/enwik8.zip"
 def main(
     data_dir_path: Path = Path("data"),
     model_file_path: Path = Path("models/enwik8.model"),
-    vocab_file_path: Path | None = None,
-    vocab_size: int = 2048,
     num_threads: int = 1,
+    vocab_size: int = 2048,
+    save_vocab: bool = False,
 ):
     zip_file_path = data_dir_path / "enwik8.zip"
     data_file_path = data_dir_path / "enwik8"
@@ -32,12 +32,11 @@ def main(
 
     text = data_file_path.read_text(encoding="utf-8")
     model_file_path.parent.mkdir(parents=True, exist_ok=True)
-    model_file_path = str(model_file_path)
-    vocab_file_path = str(vocab_file_path) if vocab_file_path else None
+    vocab_file_path = str(model_file_path.with_suffix(".vocab")) if save_vocab else None
     t0 = time.time()
     tokenizer = BasicTokenizer(num_threads)
     tokenizer.train(text, vocab_size)
-    tokenizer.save(model_file_path, vocab_file_path)
+    tokenizer.save(str(model_file_path), vocab_file_path)
     t1 = time.time()
     print(f"Training took {t1 - t0:.2f} seconds")
 
