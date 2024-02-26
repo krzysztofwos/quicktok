@@ -982,7 +982,7 @@ dependencies = [
 
 [[package]]
 name = "quicktok"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "indexmap",
  "pyo3",
