@@ -39,10 +39,18 @@ Run training script:
 python train-enwik8.py --vocab-file-path models/enwik8.vocab --num-threads 8
 ```
 
-## Rust example
+## Rust examples
+
+### Basic
 
 ```bash
-cargo run --release --example train
+cargo run --release --package quicktok-examples --bin train -- data/taylorswift.txt --vocab-size 512
+```
+
+### Multi-threaded
+
+```bash
+cargo run --release --package quicktok-examples --bin train-enwik8 -- --num-threads 4 --save-vocab
 ```
 
 ## Performance
