@@ -32,6 +32,7 @@ fn get_most_common_pair(
 }
 
 fn parallel_get_most_common_pair(ids: &[usize], num_chunks: usize) -> (usize, usize) {
+    assert!(num_chunks > 0, "num_chunks must be greater than 0");
     let chunk_size = ids.len() / num_chunks;
     let counts = Mutex::new(HashMap::new());
 
