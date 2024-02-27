@@ -1,6 +1,13 @@
 <p align="center" style="font-size: 48px; font-weight: bold;">Work in Progress</p>
 
-# quicktok
+# quicktok &emsp; [![Build Status]][Actions] [![Latest Version PyPI]][PyPI] [![Latest Version crates.io]][crates.io]
+
+[Build Status]: https://img.shields.io/github/actions/workflow/status/krzysztofwos/quicktok/CI.yml?branch=main
+[Actions]: https://github.com/krzysztofwos/quicktok/actions?query=branch%3Amain
+[Latest Version PyPI]: https://img.shields.io/pypi/v/quicktok.svg
+[PyPI]: https://pypi.org/project/quicktok/
+[Latest Version crates.io]: https://img.shields.io/crates/v/quicktok.svg
+[crates.io]: https://crates.io/crates/quicktok
 
 Rust implementation of Andrej Karpathy's [minbpe](https://github.com/karpathy/minbpe).
 
