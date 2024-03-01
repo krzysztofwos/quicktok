@@ -9,8 +9,6 @@ use clap::Parser;
 use quicktok::{BasicTokenizer, Tokenizer};
 use zip::ZipArchive;
 
-const ENWIK8_URL: &str = "http://mattmahoney.net/dc/enwik8.zip";
-
 #[derive(Parser, Debug)]
 #[clap(author, version, about, long_about = None)]
 struct Args {
@@ -28,6 +26,9 @@ struct Args {
 
     #[clap(long)]
     save_vocab: bool,
+
+    #[clap(long, default_value = "http://mattmahoney.net/dc/enwik8.zip")]
+    enwik8_url: String,
 }
 
 fn main() {
@@ -37,7 +38,7 @@ fn main() {
 
     if !zip_file_path.exists() {
         let response =
-            reqwest::blocking::get(ENWIK8_URL).expect("failed to download enwik8 Zip file");
+            reqwest::blocking::get(args.enwik8_url).expect("failed to download enwik8 Zip file");
         fs::write(
             &zip_file_path,
             response.bytes().expect("failed to read response"),

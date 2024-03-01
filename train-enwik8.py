@@ -9,8 +9,6 @@ import typer
 
 from quicktok import BasicTokenizer
 
-ENWIK8_URL = "http://mattmahoney.net/dc/enwik8.zip"
-
 
 def main(
     data_dir_path: Path = Path("data"),
@@ -18,12 +16,13 @@ def main(
     num_threads: int = 1,
     vocab_size: int = 2048,
     save_vocab: bool = False,
+    enwik8_url: str = "http://mattmahoney.net/dc/enwik8.zip",
 ):
     zip_file_path = data_dir_path / "enwik8.zip"
     data_file_path = data_dir_path / "enwik8"
 
     if not zip_file_path.exists():
-        response = requests.get(ENWIK8_URL)
+        response = requests.get(enwik8_url)
         zip_file_path.write_bytes(response.content)
 
     if not data_file_path.exists():
