@@ -1,12 +1,14 @@
 <p align="center" style="font-size: 48px; font-weight: bold;">Work in Progress</p>
 
-# quicktok &emsp; [![Build Status]][Actions] [![Latest Version PyPI]][PyPI] [![Latest Version crates.io]][crates.io]
+# quicktok &emsp; [![Python Build Status]][Python Actions] [![Rust Build Status]][Rust Actions] [![Latest Version PyPI]][PyPI] [![Latest Version crates.io]][crates.io]
 
-[Build Status]: https://img.shields.io/github/actions/workflow/status/krzysztofwos/quicktok/CI.yml?branch=main
-[Actions]: https://github.com/krzysztofwos/quicktok/actions?query=branch%3Amain
-[Latest Version PyPI]: https://img.shields.io/pypi/v/quicktok.svg
+[Python Build Status]: https://img.shields.io/github/actions/workflow/status/krzysztofwos/quicktok/python-ci.yml?branch=main&label=Python
+[Python Actions]: https://github.com/krzysztofwos/quicktok/actions/workflows/python-ci.yml?query=branch%3Amain
+[Rust Build Status]: https://img.shields.io/github/actions/workflow/status/krzysztofwos/quicktok/rust-ci.yml?branch=main&label=Rust
+[Rust Actions]: https://github.com/krzysztofwos/quicktok/actions/workflows/rust-ci.yml?query=branch%3Amain
+[Latest Version PyPI]: https://img.shields.io/pypi/v/quicktok?label=PyPI
 [PyPI]: https://pypi.org/project/quicktok/
-[Latest Version crates.io]: https://img.shields.io/crates/v/quicktok.svg
+[Latest Version crates.io]: https://img.shields.io/crates/v/quicktok
 [crates.io]: https://crates.io/crates/quicktok
 
 Rust implementation of Andrej Karpathy's [minbpe](https://github.com/karpathy/minbpe).
