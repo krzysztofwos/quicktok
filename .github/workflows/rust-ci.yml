@@ -1,0 +1,87 @@
+name: Rust CI
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - "*"
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Check
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        rust: [stable]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: ${{ matrix.rust }}
+          override: true
+      - uses: actions-rs/cargo@v1
+        with:
+          command: check
+          args: --workspace
+
+  test:
+    name: Test
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        rust: [stable]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+      - uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: ${{ matrix.rust }}
+          override: true
+      - uses: actions-rs/cargo@v1
+        with:
+          command: test
+          args: --workspace
+
+  fmt:
+    name: Rustfmt
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
+      - run: rustup component add rustfmt
+      - uses: actions-rs/cargo@v1
+        with:
+          command: fmt
+          args: --all -- --check
+
+  clippy:
+    name: Clippy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
+      - run: rustup component add clippy
+      - uses: actions-rs/cargo@v1
+        with:
+          command: clippy
+          args: --workspace --tests --examples -- -D warnings
