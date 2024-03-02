@@ -403,7 +403,7 @@ The ancestors of llamas are thought to have originated from the Great Plains of 
             .expect("failed to save the tokenizer model");
         let mut loaded_tokenizer = BasicTokenizer::new(1);
         loaded_tokenizer
-            .load(&model_file_path)
+            .load(model_file_path)
             .expect("failed to load the tokenizer model");
         let loaded_ids = loaded_tokenizer.encode(text);
         assert_eq!(
