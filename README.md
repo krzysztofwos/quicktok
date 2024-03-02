@@ -62,7 +62,9 @@ cargo run --release --package quicktok-examples --bin train -- \
 ### Multi-threaded
 
 ```bash
-cargo run --release --package quicktok-examples --bin train-enwik8 -- --num-threads 4 --save-vocab
+cargo run --release --package quicktok-examples --bin train-enwik8 -- \
+    --num-threads 4 \
+    --save-vocab
 ```
 
 ## Performance
