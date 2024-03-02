@@ -18,6 +18,9 @@ struct Args {
     #[clap(long, default_value = "models/enwik8.model")]
     model_file_path: PathBuf,
 
+    #[clap(long)]
+    max_bytes: Option<usize>,
+
     #[clap(long, default_value_t = 1)]
     num_threads: usize,
 
@@ -55,7 +58,16 @@ fn main() {
             .expect("failed to extract Zip file");
     }
 
-    let text = fs::read_to_string(&data_file_path).expect("failed to read data file");
+    let bytes = fs::read(&data_file_path).expect("failed to read data file");
+    let bytes = match args.max_bytes {
+        Some(max_bytes) => {
+            let bytes: Vec<_> = bytes.into_iter().take(max_bytes).collect();
+            println!("Training on the first {} bytes", bytes.len());
+            bytes
+        }
+        None => bytes,
+    };
+    let text = String::from_utf8_lossy(&bytes);
     let output_dir_path = args.model_file_path.parent().unwrap();
     fs::create_dir_all(output_dir_path).expect("failed to create output directory");
     let vocab_file_path = args.model_file_path.with_extension("vocab");

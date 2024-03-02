@@ -13,6 +13,7 @@ from quicktok import BasicTokenizer
 def main(
     data_dir_path: Path = Path("data"),
     model_file_path: Path = Path("models/enwik8.model"),
+    max_bytes: int | None = None,
     num_threads: int = 1,
     vocab_size: int = 2048,
     save_vocab: bool = False,
@@ -29,7 +30,13 @@ def main(
         with zipfile.ZipFile(zip_file_path, "r") as zip_ref:
             zip_ref.extractall(data_dir_path)
 
-    text = data_file_path.read_text(encoding="utf-8")
+    data = data_file_path.read_bytes()
+
+    if max_bytes:
+        data = data[:max_bytes]
+        print(f"Training on the first {len(data)} bytes")
+
+    text = data.decode("utf-8", errors="replace")
     model_file_path.parent.mkdir(parents=True, exist_ok=True)
     vocab_file_path = str(model_file_path.with_suffix(".vocab")) if save_vocab else None
     t0 = time.time()
