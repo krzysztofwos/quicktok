@@ -10,13 +10,11 @@ from quicktok import BasicTokenizer
 
 def main(
     data_file_path: Path,
-    model_file_path: Path = Path("models/taylorswift.model"),
+    model_file_path: Path,
     num_threads: int = 1,
     vocab_size: int = 512,
     save_vocab: bool = False,
 ):
-    data_dir_path = Path("data")
-    data_file_path = data_dir_path / "taylorswift.txt"
     text = data_file_path.read_text(encoding="utf-8")
     model_file_path.parent.mkdir(parents=True, exist_ok=True)
     vocab_file_path = str(model_file_path.with_suffix(".vocab")) if save_vocab else None

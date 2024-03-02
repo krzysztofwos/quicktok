@@ -8,7 +8,6 @@ use quicktok::{BasicTokenizer, Tokenizer};
 struct Args {
     data_file_path: PathBuf,
 
-    #[clap(long, default_value = "models/taylorswift.model")]
     model_file_path: PathBuf,
 
     #[clap(long, default_value_t = 1)]

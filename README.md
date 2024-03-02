@@ -51,7 +51,10 @@ Run training script:
 ### Basic
 
 ```bash
-cargo run --release --package quicktok-examples --bin train -- data/taylorswift.txt --save-vocab
+cargo run --release --package quicktok-examples --bin train -- \
+    data/taylorswift.txt \
+    models/taylorswift.model \
+    --save-vocab
 ```
 
 ### Multi-threaded
