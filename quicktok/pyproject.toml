@@ -12,5 +12,8 @@ classifiers = [
 ]
 dynamic = ["version"]
 
+[project.urls]
+repository = "https://github.com/openai/tiktoken"
+
 [tool.maturin]
 features = ["pyo3/extension-module"]
